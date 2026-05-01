@@ -39,6 +39,14 @@ function validate() {
   if (!manifest.theme?.colors?.frame)
     throw new Error('manifest.json missing theme.colors.frame');
 
+  // Keep package.json and manifest.json versions in sync
+  const pkgPath = join(root, 'package.json');
+  if (existsSync(pkgPath)) {
+    const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
+    if (pkg.version !== manifest.version)
+      throw new Error(`Version mismatch: package.json ${pkg.version} vs manifest.json ${manifest.version}`);
+  }
+
   for (const icon of ['icon16.png', 'icon48.png', 'icon128.png']) {
     if (!existsSync(join(root, 'icons', icon)))
       throw new Error(`Missing required icon: icons/${icon}`);

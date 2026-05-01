@@ -7,12 +7,18 @@
 
 | Size | File | Notes |
 |------|------|-------|
+| Vector | `icons/icon.svg` | SVG source |
+| 512×512 px | `icons/icon512.png` | High-res PNG |
 | 128×128 px | `icons/icon128.png` | Used on the store listing tile |
+| 48×48 px | `icons/icon48.png` | Extension management page |
+| 16×16 px | `icons/icon16.png` | Browser favicon/tab |
 
 ## Screenshots (1–5 required)
 
 | Spec | Value |
 |------|-------|
+| Icon (SVG) | `icons/icon.svg` |
+| Icon (PNG) | `icons/icon128.png` (plus 512, 48, 16) |
 | Preferred size | **1280×800 px** |
 | Minimum size | 640×400 px |
 | Format | PNG or JPEG |

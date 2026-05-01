@@ -5,10 +5,11 @@
   "type": "module",
   "engines": { "node": ">=18" },
   "scripts": {
-    "validate": "node -e \"JSON.parse(require('fs').readFileSync('manifest.json','utf8'))\" && node scripts/package-extension.mjs --dry-run",
-    "sync":     "node scripts/sync-from-vscode-theme.mjs",
-    "package":  "node scripts/package-extension.mjs",
-    "package:dry": "node scripts/package-extension.mjs --dry-run"
+    "validate":     "npm run package:dry",
+    "sync":         "node scripts/sync-from-vscode-theme.mjs",
+    "generate:ntp": "node scripts/generate-ntp-image.mjs",
+    "package":      "node scripts/package-extension.mjs",
+    "package:dry":  "node scripts/package-extension.mjs --dry-run"
   },
   "devDependencies": {
     "archiver": "^7.0.1"

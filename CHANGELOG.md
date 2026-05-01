@@ -1,0 +1,32 @@
+# Changelog
+
+## [1.1.0] - 2026-05-01
+
+### Added
+- Expanded `theme.colors` from 19 to 29 keys, all derived from `santi020k-dark-color-theme.json`:
+  - `background_tab` — inactive tab background (`tab.inactiveBackground`, `#0b0712`)
+  - `tab_line` — active tab accent line (`tab.activeBorder`, `#752df0`)
+  - `tab_background_text_inactive` — inactive tab text in unfocused window (`#8d8896`)
+  - `tab_background_text_incognito` / `tab_background_text_incognito_inactive`
+  - `frame_incognito` / `frame_incognito_inactive` — darkened frame variants
+  - `toolbar_text` — address bar and toolbar label text
+- `images/theme_ntp_background.png` — 256×256 vertical gradient (`#110c1d` → `#1c1528`) for the New Tab page
+- `scripts/generate-ntp-image.mjs` — pure Node.js PNG generator for the NTP background
+- `scripts/sync-from-vscode-theme.mjs` — emits `theme.colors` snippet from the VS Code JSONC source
+- `scripts/package-extension.mjs` — cross-platform zip via `archiver`, with dry-run validation and version sync check
+- `package.json` with `npm run validate|sync|generate:ntp|package|package:dry`
+- `.nvmrc` (Node 20)
+- `store/PUBLISHING.md`, `store/listing-en.md`, `store/image-specs.md`
+- `PRIVACY.md`
+
+### Changed
+- `manifest.json` bumped to `1.1.0`
+- CI (`validate.yml`) now runs `npm ci` + package dry-run; adds NTP image presence check
+
+## [1.0.0] - 2026-04-01
+
+### Added
+- Initial Chrome theme with 19 color keys covering frame, toolbar, tabs, NTP, and omnibox
+- Icons at 16, 48, and 128 px
+- `README.md` and `LICENSE`
+- GitHub Actions workflow: JSON validity check
