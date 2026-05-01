@@ -1,0 +1,8 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#F8F6FD"/>
+  <g opacity="0.4">
+    <rect x="1000" y="40" width="880" height="1000" rx="120" stroke="#6319BE" stroke-width="2" stroke-dasharray="24 24"/>
+    <path d="M1300 440L1480 600L1300 760" stroke="#6319BE" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="1580" y1="760" x2="1760" y2="760" stroke="#6319BE" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Santi020k Theme (Light)",
+  "version": "1.1.0",
+  "description": "Light version of the Santi020k theme — soft lavender surfaces, deep violet accents, and high legibility.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "theme": {
+    "images": {
+      "theme_ntp_background": "images/theme_ntp_background_light.png"
+    },
+    "properties": {
+      "ntp_background_alignment": "center",
+      "ntp_background_repeat": "no-repeat"
+    },
+    "colors": {
+      "bookmark_text":                         [ 48,  46,  54],
+      "button_background":                     [227, 223, 240],
+      "control_background":                    [211, 205, 230],
+
+      "frame":                                 [234, 231, 245],
+      "frame_inactive":                        [248, 246, 253],
+      "frame_incognito":                       [211, 205, 230],
+      "frame_incognito_inactive":              [227, 223, 240],
+
+      "background_tab":                        [234, 231, 245],
+
+      "ntp_background":                        [248, 246, 253],
+      "ntp_header":                            [248, 246, 253],
+      "ntp_link":                              [ 99,  25, 190],
+      "ntp_link_underline":                    [ 99,  25, 190],
+      "ntp_section":                           [248, 246, 253],
+      "ntp_section_link":                      [119,  48, 184],
+      "ntp_section_text":                      [ 64,  56,  80],
+      "ntp_text":                              [ 48,  46,  54],
+
+      "omnibox_background":                    [234, 231, 245],
+      "omnibox_text":                          [ 48,  46,  54],
+
+      "tab_background_separator":              [211, 205, 230],
+      "tab_background_text":                   [152, 128, 192],
+      "tab_background_text_inactive":          [152, 128, 192],
+      "tab_background_text_incognito":         [ 64,  56,  80],
+      "tab_background_text_incognito_inactive":[ 94,  87, 107],
+      "tab_line":                              [ 99,  25, 190],
+      "tab_text":                              [ 48,  46,  54],
+
+      "toolbar":                               [248, 246, 253],
+      "toolbar_button_icon":                   [ 64,  56,  80],
+      "toolbar_text":                          [ 48,  46,  54]
+    }
+  }
+}

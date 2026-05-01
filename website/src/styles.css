@@ -237,6 +237,12 @@ code {
   animation: hero-ken-burns 20s infinite alternate ease-in-out;
 }
 
+:root[data-theme="light"] .hero-wallpaper {
+  background-image:
+    linear-gradient(to bottom, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%),
+    url('/wallpaper-light.svg');
+}
+
 @keyframes hero-ken-burns {
   from { transform: scale(1); }
   to { transform: scale(1.08); }
@@ -248,6 +254,11 @@ code {
       linear-gradient(to bottom, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%),
       url('/wallpaper-3-mobile.webp');
     background-position: center center;
+  }
+  :root[data-theme="light"] .hero-wallpaper {
+    background-image:
+      linear-gradient(to bottom, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%),
+      url('/wallpaper-light-mobile.svg');
   }
 }
 
@@ -428,7 +439,8 @@ h3 {
 }
 
 /* Chrome frame colors exactly from manifest.json */
-.bm-frame { background: #0b0712; display: flex; flex-direction: column; }
+.bm-frame { background: #0b0712; display: flex; flex-direction: column; transition: background 0.3s; }
+:root[data-theme="light"] .bm-frame { background: #eae7f5; }
 
 .bm-tabstrip {
   display: flex;
@@ -437,7 +449,9 @@ h3 {
   padding: 10px 12px 0;
   background: #0b0712;
   min-height: 46px;
+  transition: background 0.3s;
 }
+:root[data-theme="light"] .bm-tabstrip { background: #eae7f5; }
 
 .bm-tab {
   display: flex;
@@ -458,7 +472,9 @@ h3 {
   background: #1c1528; /* toolbar color — active tab floats on the strip */
   color: #dfdde3;
   overflow: visible;
+  transition: background 0.3s, color 0.3s;
 }
+:root[data-theme="light"] .bm-tab--active { background: #f8f6fd; color: #302e36; }
 
 .bm-tab-line {
   position: absolute;
@@ -469,13 +485,16 @@ h3 {
   border-radius: 2px;
   background: #752df0; /* tab_line: tab.activeBorder */
 }
+:root[data-theme="light"] .bm-tab-line { background: #6319be; }
 
 .bm-tab--inactive {
   background: #0b0712; /* background_tab: tab.inactiveBackground */
   color: #a19da8; /* tab_background_text */
   border: 1px solid #231d30;
   border-bottom: none;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
+:root[data-theme="light"] .bm-tab--inactive { background: #eae7f5; color: #9880c0; border-color: #d3cde6; }
 
 .bm-tab-favicon { flex-shrink: 0; opacity: 0.7; }
 .bm-tab--active .bm-tab-favicon { opacity: 1; color: var(--brand); }
@@ -521,7 +540,9 @@ h3 {
   padding: 8px 14px;
   background: #1c1528; /* toolbar */
   min-height: 46px;
+  transition: background 0.3s;
 }
+:root[data-theme="light"] .bm-toolbar { background: #f8f6fd; }
 
 .bm-nav-btns {
   display: flex;
@@ -551,13 +572,17 @@ h3 {
   background: #110c1d; /* omnibox_background: editor.background */
   color: #b6b2bd;
   font-size: 0.82rem;
+  transition: background 0.3s, color 0.3s;
 }
+:root[data-theme="light"] .bm-omnibox { background: #eae7f5; color: #9880c0; }
 
 .bm-omnibox-url {
   color: #dfdde3; /* omnibox_text */
   font-family: "Fira Code", monospace;
   font-size: 0.8rem;
+  transition: color 0.3s;
 }
+:root[data-theme="light"] .bm-omnibox-url { color: #302e36; }
 
 .bm-url-scheme { color: #945df4; } /* accent on domain */
 
@@ -583,7 +608,9 @@ h3 {
   border-top: 1px solid #231d30;
   font-size: 0.74rem;
   color: #dfdde3; /* bookmark_text */
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
+:root[data-theme="light"] .bm-bookmarks { background: #f8f6fd; color: #302e36; border-top-color: #d3cde6; }
 
 .bm-bookmark {
   padding: 3px 8px;
@@ -601,7 +628,9 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.3s;
 }
+:root[data-theme="light"] .bm-page { background: #f8f6fd; }
 
 .bm-ntp {
   display: flex;
@@ -625,7 +654,9 @@ h3 {
   border: 1px solid #231d30;
   color: #8d8896;
   font-size: 0.9rem;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
+:root[data-theme="light"] .bm-ntp-search { background: #f8f6fd; border-color: #d3cde6; color: #9880c0; }
 
 .bm-ntp-shortcuts {
   display: flex;
@@ -654,8 +685,9 @@ h3 {
   font-weight: 800;
   font-size: 1.1rem;
   color: #945df4; /* ntp_link */
-  transition: border-color 0.2s;
+  transition: background 0.3s, border-color 0.2s, color 0.3s;
 }
+:root[data-theme="light"] .bm-shortcut-icon { background: #f0edf9; border-color: #d3cde6; color: #6319be; }
 
 .bm-shortcut:hover .bm-shortcut-icon { border-color: #945df4; }
 
