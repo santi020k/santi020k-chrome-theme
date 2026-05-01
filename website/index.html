@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Anti-FOUC: sets data-theme before CSS renders -->
+    <script>
+      (function () {
+        var s = localStorage.getItem('theme')
+        var pref = s === 'light' || s === 'dark'
+          ? s
+          : window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        document.documentElement.setAttribute('data-theme', pref)
+      })()
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Santi020k Theme — Chrome Browser Theme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta name="description" content="A Chrome browser theme matching the Santi020k VS Code palette — deep violet surfaces, muted lavender text, and violet accents. Free on the Chrome Web Store." />
+    <meta name="author" content="Santiago Molina" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="canonical" href="https://theme.santi020k.com/chrome" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#110c1d" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8f6fd" media="(prefers-color-scheme: light)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://theme.santi020k.com/chrome" />
+    <meta property="og:site_name" content="Santi020k Theme" />
+    <meta property="og:title" content="Santi020k Theme — Chrome Browser Theme" />
+    <meta property="og:description" content="A Chrome browser theme matching the Santi020k VS Code palette — deep violet surfaces, muted lavender text, and violet accents." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@santi020k" />
+    <meta name="twitter:creator" content="@santi020k" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Santi020k Theme (Chrome)",
+      "applicationCategory": "BrowserApplication",
+      "applicationSubCategory": "Browser Theme",
+      "operatingSystem": "Windows, macOS, Linux",
+      "softwareVersion": "1.1.0",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "url": "https://theme.santi020k.com/chrome",
+      "description": "A Chrome browser theme matching the Santi020k VS Code palette — deep violet surfaces, muted lavender text, and violet accents.",
+      "author": {
+        "@type": "Person",
+        "name": "Santiago Molina",
+        "url": "https://santi020k.com",
+        "sameAs": ["https://github.com/santi020k", "https://twitter.com/santi020k"]
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <header class="site-shell site-header" aria-label="Site header">
+      <a class="brand" href="#top" aria-label="Santi020k Theme home">
+        <img src="/favicon.svg" alt="" width="36" height="36" />
+        <span>Santi020k Theme</span>
+      </a>
+      <div class="header-actions">
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+          <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <button class="theme-toggle" type="button" role="switch" aria-label="Toggle color theme" aria-checked="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+      <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
+        <a href="#preview">Preview</a>
+        <a href="#palette">Palette</a>
+        <a href="#why">Why</a>
+        <a href="#install">Install</a>
+        <span class="separator" aria-hidden="true"></span>
+        <a href="https://github.com/santi020k/santi020k-chrome-theme" rel="noopener noreferrer">GitHub</a>
+        <a href="https://theme.santi020k.com" rel="noopener noreferrer">VS Code theme</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- ── Hero ──────────────────────────────────────────────────────────── -->
+      <section class="hero">
+        <div class="hero-wallpaper" aria-hidden="true"></div>
+        <div class="site-shell hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Chrome browser theme</p>
+            <h1>Browser chrome as calm as your editor.</h1>
+            <p class="lede">
+              Every surface — tab strip, omnibox, New Tab page, incognito — maps directly to a VS Code token from the Santi020k dark palette. Deep violet, muted lavender, no neon.
+            </p>
+            <div class="actions" aria-label="Theme actions">
+              <a class="button button-primary" href="https://chrome.google.com/webstore/category/themes" rel="noopener noreferrer">
+                Chrome Web Store
+              </a>
+              <a class="button button-secondary" href="https://github.com/santi020k/santi020k-chrome-theme" rel="noopener noreferrer">
+                GitHub
+              </a>
+            </div>
+            <div class="install-action">
+              <button class="button-copy-install" type="button" aria-label="Copy load unpacked path hint">
+                <span class="command">chrome://extensions → Load unpacked</span>
+                <span class="copy-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Browser preview ───────────────────────────────────────────────── -->
+      <section id="preview" class="site-shell preview-section">
+        <div class="preview-header">
+          <p class="eyebrow">Preview</p>
+          <h2>Every surface, matched.</h2>
+          <p class="section-lede">The same token-level precision as the VS Code theme — no approximations, no guesswork.</p>
+        </div>
+
+        <div class="browser-mockup" aria-label="Chrome browser mockup with Santi020k theme">
+          <!-- Window frame -->
+          <div class="bm-frame">
+            <!-- Tab strip -->
+            <div class="bm-tabstrip">
+              <div class="bm-tab bm-tab--active">
+                <span class="bm-tab-line"></span>
+                <svg class="bm-tab-favicon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span class="bm-tab-label">New Tab</span>
+                <span class="bm-tab-close" aria-hidden="true">×</span>
+              </div>
+              <div class="bm-tab bm-tab--inactive">
+                <svg class="bm-tab-favicon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span class="bm-tab-label">GitHub</span>
+                <span class="bm-tab-close" aria-hidden="true">×</span>
+              </div>
+              <div class="bm-tab bm-tab--inactive">
+                <svg class="bm-tab-favicon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span class="bm-tab-label">Docs</span>
+                <span class="bm-tab-close" aria-hidden="true">×</span>
+              </div>
+              <button class="bm-tab-new" aria-label="New tab" aria-hidden="true">+</button>
+            </div>
+            <!-- Toolbar -->
+            <div class="bm-toolbar">
+              <div class="bm-nav-btns" aria-hidden="true">
+                <span>‹</span><span>›</span><span>↻</span>
+              </div>
+              <div class="bm-omnibox">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <span class="bm-omnibox-url"><span class="bm-url-scheme">theme.santi020k.com</span>/chrome</span>
+              </div>
+              <div class="bm-toolbar-actions" aria-hidden="true">
+                <span class="bm-icon-btn">⋮</span>
+              </div>
+            </div>
+            <!-- Bookmarks bar -->
+            <div class="bm-bookmarks" aria-hidden="true">
+              <span class="bm-bookmark">★ VS Code Theme</span>
+              <span class="bm-bookmark">★ Marketplace</span>
+              <span class="bm-bookmark">★ GitHub</span>
+            </div>
+            <!-- Page content -->
+            <div class="bm-page">
+              <div class="bm-ntp">
+                <div class="bm-ntp-search">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  <span>Search or type a URL</span>
+                </div>
+                <div class="bm-ntp-shortcuts">
+                  <div class="bm-shortcut">
+                    <div class="bm-shortcut-icon">G</div>
+                    <span>GitHub</span>
+                  </div>
+                  <div class="bm-shortcut">
+                    <div class="bm-shortcut-icon">M</div>
+                    <span>Marketplace</span>
+                  </div>
+                  <div class="bm-shortcut">
+                    <div class="bm-shortcut-icon">D</div>
+                    <span>Docs</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="token-legend" aria-label="Color token legend">
+          <div class="token-item">
+            <span class="token-swatch" style="background:#0b0712"></span>
+            <div>
+              <strong>Frame</strong>
+              <span>#0b0712 — titleBar.activeBackground</span>
+            </div>
+          </div>
+          <div class="token-item">
+            <span class="token-swatch" style="background:#1c1528"></span>
+            <div>
+              <strong>Toolbar / tab strip</strong>
+              <span>#1c1528 — sideBar.background</span>
+            </div>
+          </div>
+          <div class="token-item">
+            <span class="token-swatch" style="background:#752df0"></span>
+            <div>
+              <strong>Active tab accent</strong>
+              <span>#752df0 — tab.activeBorder</span>
+            </div>
+          </div>
+          <div class="token-item">
+            <span class="token-swatch" style="background:#110c1d"></span>
+            <div>
+              <strong>NTP / omnibox</strong>
+              <span>#110c1d — editor.background</span>
+            </div>
+          </div>
+          <div class="token-item">
+            <span class="token-swatch" style="background:#945df4"></span>
+            <div>
+              <strong>Links / accents</strong>
+              <span>#945df4 — textLink.foreground</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Why section ────────────────────────────────────────────────────── -->
+      <section id="why" class="site-shell why-section">
+        <div>
+          <p class="eyebrow">Philosophy</p>
+          <h2>One palette. Every surface.</h2>
+          <p class="section-lede">The Chrome theme is not a port — it is the same palette, mapped with the same token discipline as the VS Code extension.</p>
+        </div>
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+            </div>
+            <h3>Token-mapped</h3>
+            <p>Every Chrome color key traces back to a named VS Code token. No hand-tuned guesses — if the VS Code theme changes, the sync script updates the manifest.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>No permissions</h3>
+            <p>Themes ship as declarative JSON — no content scripts, no background workers, no host permissions. Zero attack surface. The extension can be audited in under a minute.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3>Incognito aware</h3>
+            <p>Incognito windows get a dedicated, slightly deeper frame variant rather than the same color as normal mode — the distinction is intentional and subtle.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Open source</h3>
+            <p>Every color decision is documented in <code>manifest.json</code> with inline alignment comments. Fork it, adjust a token, reload unpacked — no build step needed.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── Palette ────────────────────────────────────────────────────────── -->
+      <section id="palette" class="site-shell palette-section">
+        <div>
+          <p class="eyebrow">Palette</p>
+          <h2>Violets for focus, depth for calm.</h2>
+        </div>
+        <div class="swatches" aria-label="Core theme colors">
+          <span style="--swatch: #0b0712">Frame</span>
+          <span style="--swatch: #1c1528">Toolbar</span>
+          <span style="--swatch: #110c1d">NTP / omnibox</span>
+          <span style="--swatch: #752df0">Tab accent</span>
+          <span style="--swatch: #945df4">Links</span>
+          <span style="--swatch: #b48df7">Section links</span>
+          <span style="--swatch: #dfdde3">Primary text</span>
+          <span style="--swatch: #8d8896; --swatch-text: var(--ink)">Muted text</span>
+        </div>
+      </section>
+
+      <!-- ── Install ────────────────────────────────────────────────────────── -->
+      <section id="install" class="site-shell install-section">
+        <div>
+          <p class="eyebrow">Install</p>
+          <h2>Two ways to load it.</h2>
+        </div>
+        <div class="install-grid">
+          <article class="install-card">
+            <div class="install-step-badge">01</div>
+            <h3>Load unpacked (instant)</h3>
+            <ol class="install-steps">
+              <li>Clone or download the <a href="https://github.com/santi020k/santi020k-chrome-theme" rel="noopener noreferrer">GitHub repo</a></li>
+              <li>Open <code>chrome://extensions</code> in Chrome</li>
+              <li>Enable <strong>Developer mode</strong></li>
+              <li>Click <strong>Load unpacked</strong> → select the <code>santi020k-chrome-theme</code> folder</li>
+            </ol>
+          </article>
+          <article class="install-card">
+            <div class="install-step-badge">02</div>
+            <h3>Chrome Web Store</h3>
+            <p class="install-card-body">One-click install, stays updated automatically. Submission in progress — check back soon or star the repo for updates.</p>
+            <a class="button button-primary install-store-btn" href="https://chrome.google.com/webstore/category/themes" rel="noopener noreferrer">
+              Open Chrome Web Store
+            </a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-shell site-footer">
+      <span>Built by Santiago Molina.</span>
+      <div class="footer-links">
+        <a href="https://santi020k.com" rel="noopener noreferrer">santi020k.com</a>
+        <a href="https://theme.santi020k.com" rel="noopener noreferrer">VS Code theme</a>
+        <a href="https://github.com/santi020k/santi020k-chrome-theme" rel="noopener noreferrer" aria-label="GitHub repository" class="github-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+            <path d="M9 18c-4.51 2-5-2-7-2"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
