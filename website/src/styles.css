@@ -442,6 +442,16 @@ h3 {
 .bm-frame { background: #0b0712; display: flex; flex-direction: column; transition: background 0.3s; }
 :root[data-theme="light"] .bm-frame { background: #eae7f5; }
 
+/* Incognito variant */
+.bm-frame--incognito { background: #08060e !important; }
+.bm-frame--incognito .bm-tabstrip { background: #08060e !important; }
+.bm-frame--incognito .bm-tab--inactive { background: #08060e !important; border-color: #1a1523 !important; }
+.bm-frame--incognito .bm-tab--active { background: #1c1528 !important; }
+.bm-frame--incognito .bm-toolbar { background: #1c1528 !important; }
+.bm-frame--incognito .bm-bookmarks { background: #1c1528 !important; border-color: #1a1523 !important; }
+.bm-frame--incognito .bm-omnibox { background: #08060e !important; }
+.bm-frame--incognito .bm-page { background: #110c1d !important; }
+
 .bm-tabstrip {
   display: flex;
   align-items: flex-end;
