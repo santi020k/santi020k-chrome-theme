@@ -1,5 +1,8 @@
 # Chrome Web Store — Image Specifications
 
+> [!NOTE]
+> **Current Assets:** The latest generated assets matching these specs can be found in [`store/assets/`](assets/).
+
 ## Extension icon (already in repo)
 
 | Size | File | Notes |

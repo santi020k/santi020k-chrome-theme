@@ -1,5 +1,7 @@
 # Santi020k Theme (Chrome)
 
+![Santi020k Chrome Theme Preview](store/assets/screenshot-main.png)
+
 Chrome browser theme matching the palette of **[santi020k VS Code theme](https://github.com/santi020k/santi020k-theme)** — deep violet chrome (`#0b0712`, `#1c1528`), editor-like surfaces (`#110c1d`), and violet accents (`#752df0` / `#945df4`). This repo is separate from the VS Code extension so releases and [Chrome Web Store](https://chrome.google.com/webstore/category/themes) listings stay independent.
 
 ## Try locally (unpacked)
