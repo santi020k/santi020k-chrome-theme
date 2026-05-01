@@ -1,11 +1,7 @@
 #!/usr/bin/env node
 /**
  * Packages the Chrome theme extension into dist/santi020k-chrome-theme.zip.
- * Only runtime files are included — store/, scripts/, and markdown are excluded.
- *
- * Usage:
- *   npm run package          # build zip
- *   npm run package:dry      # validate without writing zip
+ * Supports packaging both Dark and Light variants.
  */
 
 import { existsSync, readFileSync, mkdirSync, createWriteStream } from 'fs';
@@ -17,34 +13,37 @@ const __dir = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dir, '..');
 const dryRun = process.argv.includes('--dry-run');
 
+const VARIANTS = [
+  { name: 'dark',  manifest: 'manifest.json',       output: 'santi020k-chrome-theme.zip' },
+  { name: 'light', manifest: 'manifest-light.json', output: 'santi020k-chrome-theme-light.zip' }
+];
+
 // Runtime entries to include in the zip (relative to root).
-// Directories are added recursively; files are added as-is.
-const INCLUDE = [
+const INCLUDE_COMMON = [
   { type: 'dir',  name: 'icons' },
   { type: 'dir',  name: 'images' },
-  { type: 'file', name: 'manifest.json' },
   { type: 'file', name: 'LICENSE' },
 ];
 
-function validate() {
-  const manifestPath = join(root, 'manifest.json');
-  if (!existsSync(manifestPath)) throw new Error('manifest.json not found');
+function validate(manifestFile) {
+  const manifestPath = join(root, manifestFile);
+  if (!existsSync(manifestPath)) return null;
 
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
 
   if (manifest.manifest_version !== 3)
-    throw new Error(`Expected manifest_version 3, got ${manifest.manifest_version}`);
+    throw new Error(`${manifestFile}: Expected manifest_version 3, got ${manifest.manifest_version}`);
   if (!manifest.version || !/^\d+\.\d+\.\d+/.test(manifest.version))
-    throw new Error(`Invalid or missing version: ${manifest.version}`);
+    throw new Error(`${manifestFile}: Invalid or missing version: ${manifest.version}`);
   if (!manifest.theme?.colors?.frame)
-    throw new Error('manifest.json missing theme.colors.frame');
+    throw new Error(`${manifestFile}: Missing theme.colors.frame`);
 
-  // Keep package.json and manifest.json versions in sync
+  // Keep package.json and manifest versions in sync
   const pkgPath = join(root, 'package.json');
   if (existsSync(pkgPath)) {
     const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
     if (pkg.version !== manifest.version)
-      throw new Error(`Version mismatch: package.json ${pkg.version} vs manifest.json ${manifest.version}`);
+      throw new Error(`Version mismatch: package.json ${pkg.version} vs ${manifestFile} ${manifest.version}`);
   }
 
   for (const icon of ['icon16.png', 'icon48.png', 'icon128.png']) {
@@ -52,27 +51,28 @@ function validate() {
       throw new Error(`Missing required icon: icons/${icon}`);
   }
 
-  console.log(`manifest.json v${manifest.version} — OK`);
-  console.log(`theme.colors keys: ${Object.keys(manifest.theme.colors).join(', ')}`);
   return manifest.version;
 }
 
-function build(version) {
+function build(manifestFile, outputName, version) {
   return new Promise((res, rej) => {
     mkdirSync(join(root, 'dist'), { recursive: true });
 
-    const outPath = join(root, 'dist', 'santi020k-chrome-theme.zip');
+    const outPath = join(root, 'dist', outputName);
     const output = createWriteStream(outPath);
     const archive = archiver('zip', { zlib: { level: 9 } });
 
     output.on('close', () => {
-      console.log(`\nPacked: dist/santi020k-chrome-theme.zip (v${version}, ${archive.pointer()} bytes)`);
+      console.log(`✓ Packed: dist/${outputName} (v${version}, ${archive.pointer()} bytes)`);
       res();
     });
     archive.on('error', rej);
     archive.pipe(output);
 
-    for (const entry of INCLUDE) {
+    // Add manifest as manifest.json in the zip
+    archive.file(join(root, manifestFile), { name: 'manifest.json' });
+    
+    for (const entry of INCLUDE_COMMON) {
       const abs = join(root, entry.name);
       if (!existsSync(abs)) continue;
       if (entry.type === 'dir') {
@@ -80,21 +80,33 @@ function build(version) {
       } else {
         archive.file(abs, { name: entry.name });
       }
-      console.log(`  + ${entry.name}`);
     }
 
     archive.finalize();
   });
 }
 
-try {
-  const version = validate();
-  if (dryRun) {
-    console.log('\n--dry-run: validation passed, zip not written.');
-  } else {
-    await build(version);
+async function run() {
+  try {
+    for (const variant of VARIANTS) {
+      const version = validate(variant.manifest);
+      if (!version) {
+        console.log(`Skipping ${variant.name} (manifest not found)`);
+        continue;
+      }
+
+      console.log(`Validating ${variant.manifest} v${version}...`);
+      
+      if (dryRun) {
+        console.log(`  --dry-run: ${variant.name} validation passed.`);
+      } else {
+        await build(variant.manifest, variant.output, version);
+      }
+    }
+  } catch (err) {
+    console.error('Error:', err.message);
+    process.exit(1);
   }
-} catch (err) {
-  console.error('Error:', err.message);
-  process.exit(1);
 }
+
+run();
