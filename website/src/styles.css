@@ -230,7 +230,7 @@ code {
   inset: 0;
   background-image:
     linear-gradient(to bottom, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%),
-    url('/wallpaper-3-desktop.webp');
+    url('/wallpaper-dark.svg');
   background-size: cover;
   background-position: center 30%;
   z-index: 0;
@@ -252,7 +252,7 @@ code {
   .hero-wallpaper {
     background-image:
       linear-gradient(to bottom, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%),
-      url('/wallpaper-3-mobile.webp');
+      url('/wallpaper-dark-mobile.svg');
     background-position: center center;
   }
   :root[data-theme="light"] .hero-wallpaper {
