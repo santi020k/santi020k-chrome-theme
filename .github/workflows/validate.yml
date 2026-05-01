@@ -11,5 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Verify manifest.json is valid JSON
         run: node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8')); console.log('manifest.json OK')"
+
+      - name: Check required manifest fields
+        run: |
+          node -e "
+            const m = JSON.parse(require('fs').readFileSync('manifest.json','utf8'));
+            if (m.manifest_version !== 3) throw new Error('manifest_version must be 3');
+            if (!/^\d+\.\d+\.\d+/.test(m.version || '')) throw new Error('missing or invalid version');
+            if (!m.theme?.colors?.frame) throw new Error('theme.colors.frame is required');
+            console.log('Required fields OK — v' + m.version);
+          "
+
+      - name: Package dry-run
+        run: node scripts/package-extension.mjs --dry-run
