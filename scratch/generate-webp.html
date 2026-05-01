@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 0; overflow: hidden; background: #f8f6fd; }
+  .canvas {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    background: #f8f6fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dashed-box {
+    position: absolute;
+    right: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    border: 3px dashed #d3cde6;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .prompt {
+    font-family: 'Fira Code', monospace;
+    font-size: 180px;
+    color: #604c8a;
+    font-weight: 700;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="canvas" id="render-target">
+    <div class="dashed-box">
+      <div class="prompt">&gt;_</div>
+    </div>
+  </div>
+  <canvas id="output-canvas" width="1920" height="1080" style="display:none;"></canvas>
+  <div id="status">rendering...</div>
+  <script>
+    window.onload = async () => {
+      // Wait for fonts
+      await document.fonts.ready;
+      setTimeout(() => {
+        const target = document.getElementById('render-target');
+        const canvas = document.getElementById('output-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Use an SVG to draw to canvas for perfect fidelity
+        const svgData = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080">
+            <foreignObject width="100%" height="100%">
+              <div xmlns="http://www.w3.org/1999/xhtml">
+                ${target.outerHTML}
+                <style>
+                  ${document.querySelector('style').innerHTML}
+                </style>
+              </div>
+            </foreignObject>
+          </svg>
+        `;
+        
+        // Simpler: just draw manually to canvas to avoid security issues with foreignObject
+        ctx.fillStyle = '#f8f6fd';
+        ctx.fillRect(0, 0, 1920, 1080);
+        
+        // Dashed box
+        ctx.strokeStyle = '#d3cde6';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([20, 20]);
+        const boxX = 1920 - 720;
+        const boxY = (1080 - 600) / 2;
+        ctx.strokeRect(boxX, boxY, 600, 600);
+        
+        // Prompt
+        ctx.fillStyle = '#604c8a';
+        ctx.font = '700 180px "Fira Code", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.setLineDash([]); // Reset
+        ctx.fillText('>_', boxX + 300, boxY + 300);
+        
+        const dataUrl = canvas.toDataURL('image/webp', 0.9);
+        document.getElementById('status').innerText = 'done';
+        document.getElementById('status').setAttribute('data-result', dataUrl);
+      }, 1000);
+    };
+  </script>
+</body>
+</html>
