@@ -11,6 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
 
       - name: Verify manifest.json is valid JSON
         run: node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8')); console.log('manifest.json OK')"
@@ -26,4 +32,4 @@ jobs:
           "
 
       - name: Package dry-run
-        run: node scripts/package-extension.mjs --dry-run
+        run: npm run package:dry

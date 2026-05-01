@@ -4,46 +4,44 @@
  * Only runtime files are included — store/, scripts/, and markdown are excluded.
  *
  * Usage:
- *   node scripts/package-extension.mjs            # build zip
- *   node scripts/package-extension.mjs --dry-run  # validate without writing zip
+ *   npm run package          # build zip
+ *   npm run package:dry      # validate without writing zip
  */
 
-import { execSync } from 'child_process';
-import { existsSync, readFileSync, readdirSync, mkdirSync } from 'fs';
+import { existsSync, readFileSync, mkdirSync, createWriteStream } from 'fs';
 import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import archiver from 'archiver';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dir, '..');
 const dryRun = process.argv.includes('--dry-run');
 
-// Runtime files/globs to include in the zip (relative to root)
-const INCLUDE = ['manifest.json', 'icons', 'images', 'LICENSE'];
+// Runtime entries to include in the zip (relative to root).
+// Directories are added recursively; files are added as-is.
+const INCLUDE = [
+  { type: 'dir',  name: 'icons' },
+  { type: 'dir',  name: 'images' },
+  { type: 'file', name: 'manifest.json' },
+  { type: 'file', name: 'LICENSE' },
+];
 
 function validate() {
   const manifestPath = join(root, 'manifest.json');
-  if (!existsSync(manifestPath)) {
-    throw new Error('manifest.json not found');
-  }
+  if (!existsSync(manifestPath)) throw new Error('manifest.json not found');
 
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
 
-  if (manifest.manifest_version !== 3) {
+  if (manifest.manifest_version !== 3)
     throw new Error(`Expected manifest_version 3, got ${manifest.manifest_version}`);
-  }
-  if (!manifest.version || !/^\d+\.\d+\.\d+/.test(manifest.version)) {
+  if (!manifest.version || !/^\d+\.\d+\.\d+/.test(manifest.version))
     throw new Error(`Invalid or missing version: ${manifest.version}`);
-  }
-  if (!manifest.theme?.colors?.frame) {
+  if (!manifest.theme?.colors?.frame)
     throw new Error('manifest.json missing theme.colors.frame');
-  }
 
-  const iconDir = join(root, 'icons');
-  const requiredIcons = ['icon16.png', 'icon48.png', 'icon128.png'];
-  for (const icon of requiredIcons) {
-    if (!existsSync(join(iconDir, icon))) {
+  for (const icon of ['icon16.png', 'icon48.png', 'icon128.png']) {
+    if (!existsSync(join(root, 'icons', icon)))
       throw new Error(`Missing required icon: icons/${icon}`);
-    }
   }
 
   console.log(`manifest.json v${manifest.version} — OK`);
@@ -52,22 +50,33 @@ function validate() {
 }
 
 function build(version) {
-  const distDir = join(root, 'dist');
-  mkdirSync(distDir, { recursive: true });
+  return new Promise((res, rej) => {
+    mkdirSync(join(root, 'dist'), { recursive: true });
 
-  const outFile = join(distDir, 'santi020k-chrome-theme.zip');
+    const outPath = join(root, 'dist', 'santi020k-chrome-theme.zip');
+    const output = createWriteStream(outPath);
+    const archive = archiver('zip', { zlib: { level: 9 } });
 
-  // Build list of existing paths to include
-  const paths = INCLUDE.filter(p => existsSync(join(root, p)));
-  if (paths.length === 0) {
-    throw new Error('No files found to include in zip');
-  }
+    output.on('close', () => {
+      console.log(`\nPacked: dist/santi020k-chrome-theme.zip (v${version}, ${archive.pointer()} bytes)`);
+      res();
+    });
+    archive.on('error', rej);
+    archive.pipe(output);
 
-  const cmd = `cd "${root}" && zip -r "dist/santi020k-chrome-theme.zip" ${paths.join(' ')}`;
-  execSync(cmd, { stdio: 'inherit' });
+    for (const entry of INCLUDE) {
+      const abs = join(root, entry.name);
+      if (!existsSync(abs)) continue;
+      if (entry.type === 'dir') {
+        archive.directory(abs, entry.name);
+      } else {
+        archive.file(abs, { name: entry.name });
+      }
+      console.log(`  + ${entry.name}`);
+    }
 
-  console.log(`\nPacked: dist/santi020k-chrome-theme.zip (v${version})`);
-  console.log('Included:', paths.join(', '));
+    archive.finalize();
+  });
 }
 
 try {
@@ -75,7 +84,7 @@ try {
   if (dryRun) {
     console.log('\n--dry-run: validation passed, zip not written.');
   } else {
-    build(version);
+    await build(version);
   }
 } catch (err) {
   console.error('Error:', err.message);
