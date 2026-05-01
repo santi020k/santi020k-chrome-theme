@@ -3,8 +3,11 @@
   "version": "1.1.0",
   "description": "Chrome browser theme matching the Santi020k palette.",
   "type": "module",
-  "engines": { "node": ">=18" },
+  "engines": { "node": ">=22" },
   "scripts": {
+    "dev":          "vite --host 127.0.0.1 --port 4175",
+    "build":        "vite build",
+    "preview":      "vite preview --host 127.0.0.1 --port 4175",
     "validate":     "npm run package:dry",
     "sync":         "node scripts/sync-from-vscode-theme.mjs",
     "generate:ntp": "node scripts/generate-ntp-image.mjs",
@@ -12,6 +15,7 @@
     "package:dry":  "node scripts/package-extension.mjs --dry-run"
   },
   "devDependencies": {
-    "archiver": "^7.0.1"
+    "archiver": "^7.0.1",
+    "vite": "^8.0.10"
   }
 }
