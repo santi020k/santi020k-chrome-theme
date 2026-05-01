@@ -25,4 +25,4 @@ jobs:
         run: npm run package:dry
 
       - name: NTP background image present
-        run: test -f images/theme_ntp_background.png
+        run: test -f images/theme_ntp_background.webp
