@@ -10,6 +10,13 @@
     "128": "icons/icon128.png"
   },
   "theme": {
+    "images": {
+      "theme_ntp_background": "images/theme_ntp_background.webp"
+    },
+    "properties": {
+      "ntp_background_alignment": "center",
+      "ntp_background_repeat": "no-repeat"
+    },
     "colors": {
       "bookmark_text":                         [223, 221, 227],
       "button_background":                     [ 50,  43,  64],

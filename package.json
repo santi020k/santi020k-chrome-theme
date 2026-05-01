@@ -5,9 +5,9 @@
   "type": "module",
   "engines": { "node": ">=22" },
   "scripts": {
-    "dev":          "vite --host 127.0.0.1 --port 4175",
-    "build":        "vite build",
-    "preview":      "vite preview --host 127.0.0.1 --port 4175",
+    "dev":          "vite website --host 127.0.0.1 --port 4175",
+    "build":        "vite build website",
+    "preview":      "vite preview website --host 127.0.0.1 --port 4175",
     "validate":     "npm run package:dry",
     "sync":         "node scripts/sync-from-vscode-theme.mjs",
     "generate:ntp": "node scripts/generate-ntp-image.mjs",

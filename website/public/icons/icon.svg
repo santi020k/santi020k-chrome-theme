@@ -1,0 +1,6 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Use almost full canvas (512x512) with a small 8px margin -->
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="#0B0712"/>
+  <path d="M 150 160 L 260 256 L 150 352" stroke="#945DF4" stroke-width="56" stroke-linecap="round" stroke-linejoin="round" />
+  <line x1="300" y1="352" x2="390" y2="352" stroke="#945DF4" stroke-width="56" stroke-linecap="round" />
+</svg>

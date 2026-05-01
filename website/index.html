@@ -22,7 +22,7 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="color-scheme" content="dark light" />
     <link rel="canonical" href="https://theme.santi020k.com/chrome" />
-    <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#110c1d" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f8f6fd" media="(prefers-color-scheme: light)" />
     <meta property="og:type" content="website" />
@@ -55,36 +55,38 @@
     </script>
   </head>
   <body>
-    <header class="site-shell site-header" aria-label="Site header">
-      <a class="brand" href="#top" aria-label="Santi020k Theme home">
-        <img src="./icons/icon.svg" alt="" width="36" height="36" />
-        <span>Santi020k Theme</span>
-      </a>
-      <div class="header-actions">
-        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
-          <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-        <button class="theme-toggle" type="button" role="switch" aria-label="Toggle color theme" aria-checked="true">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="4"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-          </svg>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
+    <header class="site-header" aria-label="Site header">
+      <div class="site-shell header-inner">
+        <a class="brand" href="#top" aria-label="Santi020k Theme home">
+          <img src="/icons/icon.svg" alt="" width="36" height="36" />
+          <span>Santi020k Theme</span>
+        </a>
+        <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
+          <a href="#preview">Preview</a>
+          <a href="#palette">Palette</a>
+          <a href="#why">Why</a>
+          <a href="#install">Install</a>
+          <span class="separator" aria-hidden="true"></span>
+          <a href="https://github.com/santi020k/santi020k-chrome-theme" rel="noopener noreferrer">GitHub</a>
+          <a href="https://theme.santi020k.com" rel="noopener noreferrer">VS Code theme</a>
+        </nav>
+        <div class="header-actions">
+          <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+            <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <button class="theme-toggle" type="button" role="switch" aria-label="Toggle color theme" aria-checked="true">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+            </svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
       </div>
-      <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
-        <a href="#preview">Preview</a>
-        <a href="#palette">Palette</a>
-        <a href="#why">Why</a>
-        <a href="#install">Install</a>
-        <span class="separator" aria-hidden="true"></span>
-        <a href="https://github.com/santi020k/santi020k-chrome-theme" rel="noopener noreferrer">GitHub</a>
-        <a href="https://theme.santi020k.com" rel="noopener noreferrer">VS Code theme</a>
-      </nav>
     </header>
 
     <main id="top">
