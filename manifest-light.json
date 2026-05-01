@@ -14,43 +14,150 @@
     },
     "properties": {
       "ntp_background_alignment": "center",
-      "ntp_background_repeat": "no-repeat"
+      "ntp_background_repeat": "no-repeat",
+      "ntp_logo_alternate": 0
     },
     "colors": {
-      "bookmark_text":                         [ 48,  46,  54],
-      "button_background":                     [227, 223, 240],
-      "control_background":                    [211, 205, 230],
-
-      "frame":                                 [234, 231, 245],
-      "frame_inactive":                        [248, 246, 253],
-      "frame_incognito":                       [211, 205, 230],
-      "frame_incognito_inactive":              [227, 223, 240],
-
-      "background_tab":                        [234, 231, 245],
-
-      "ntp_background":                        [248, 246, 253],
-      "ntp_header":                            [248, 246, 253],
-      "ntp_link":                              [ 99,  25, 190],
-      "ntp_link_underline":                    [ 99,  25, 190],
-      "ntp_section":                           [248, 246, 253],
-      "ntp_section_link":                      [119,  48, 184],
-      "ntp_section_text":                      [ 64,  56,  80],
-      "ntp_text":                              [ 48,  46,  54],
-
-      "omnibox_background":                    [234, 231, 245],
-      "omnibox_text":                          [ 48,  46,  54],
-
-      "tab_background_separator":              [211, 205, 230],
-      "tab_background_text":                   [152, 128, 192],
-      "tab_background_text_inactive":          [152, 128, 192],
-      "tab_background_text_incognito":         [ 64,  56,  80],
-      "tab_background_text_incognito_inactive":[ 94,  87, 107],
-      "tab_line":                              [ 99,  25, 190],
-      "tab_text":                              [ 48,  46,  54],
-
-      "toolbar":                               [248, 246, 253],
-      "toolbar_button_icon":                   [ 64,  56,  80],
-      "toolbar_text":                          [ 48,  46,  54]
+      "bookmark_text": [
+        48,
+        46,
+        54
+      ],
+      "button_background": [
+        228,
+        225,
+        237
+      ],
+      "control_background": [
+        211,
+        205,
+        230
+      ],
+      "frame": [
+        227,
+        223,
+        240
+      ],
+      "frame_inactive": [
+        193,
+        190,
+        204
+      ],
+      "frame_incognito": [
+        35,
+        29,
+        48
+      ],
+      "frame_incognito_inactive": [
+        28,
+        21,
+        40
+      ],
+      "background_tab": [
+        227,
+        223,
+        240
+      ],
+      "ntp_background": [
+        248,
+        246,
+        253
+      ],
+      "ntp_header": [
+        240,
+        237,
+        249
+      ],
+      "ntp_link": [
+        99,
+        25,
+        190
+      ],
+      "ntp_link_underline": [
+        99,
+        25,
+        190
+      ],
+      "ntp_section": [
+        240,
+        237,
+        249
+      ],
+      "ntp_section_link": [
+        119,
+        48,
+        184
+      ],
+      "ntp_section_text": [
+        95,
+        82,
+        111
+      ],
+      "ntp_text": [
+        48,
+        46,
+        54
+      ],
+      "omnibox_background": [
+        248,
+        246,
+        253
+      ],
+      "omnibox_text": [
+        48,
+        46,
+        54
+      ],
+      "tab_background_separator": [
+        211,
+        205,
+        230
+      ],
+      "tab_background_text": [
+        96,
+        76,
+        138
+      ],
+      "tab_background_text_inactive": [
+        122,
+        95,
+        176
+      ],
+      "tab_background_text_incognito": [
+        122,
+        95,
+        176
+      ],
+      "tab_background_text_incognito_inactive": [
+        176,
+        168,
+        200
+      ],
+      "tab_line": [
+        99,
+        25,
+        190
+      ],
+      "tab_text": [
+        48,
+        46,
+        54
+      ],
+      "toolbar": [
+        240,
+        237,
+        249
+      ],
+      "toolbar_button_icon": [
+        95,
+        82,
+        111
+      ],
+      "toolbar_text": [
+        48,
+        46,
+        54
+      ]
     }
   }
 }

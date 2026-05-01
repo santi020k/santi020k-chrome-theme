@@ -383,25 +383,25 @@ h3 {
   font-weight: 800;
 }
 
-.button-primary { 
-  background: var(--brand-solid); 
+.button-primary {
+  background: var(--brand-solid);
   color: #ffffff;
   box-shadow: 0 4px 14px rgb(var(--glow-rgb) / 0.3);
   transition: all 0.2s ease;
 }
-.button-primary:hover { 
-  background: var(--brand-hover); 
+.button-primary:hover {
+  background: var(--brand-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgb(var(--glow-rgb) / 0.4);
 }
-.button-secondary { 
-  border-color: var(--line); 
-  background: var(--btn-secondary-bg); 
+.button-secondary {
+  border-color: var(--line);
+  background: var(--btn-secondary-bg);
   color: var(--ink-soft);
   transition: all 0.2s ease;
 }
-.button-secondary:hover { 
-  border-color: var(--brand-hover); 
+.button-secondary:hover {
+  border-color: var(--brand-hover);
   color: var(--ink);
   background: var(--surface-strong);
   transform: translateY(-2px);
@@ -427,6 +427,7 @@ h3 {
 }
 
 .preview-header { max-width: 560px; }
+.mockup-controls { margin-top: 24px; display: flex; gap: 12px; }
 
 /* ── Browser mockup ── */
 .browser-mockup {
