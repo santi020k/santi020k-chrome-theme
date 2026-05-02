@@ -1,27 +1,50 @@
 # Santi020k Theme (Chrome)
 
-<img src="icons/icon128.png" width="64" height="64" align="right" />
+[![Validate](https://github.com/santi020k/santi020k-chrome-theme/actions/workflows/validate.yml/badge.svg)](https://github.com/santi020k/santi020k-chrome-theme/actions/workflows/validate.yml)
+[![Version](https://img.shields.io/github/package-json/v/santi020k/santi020k-chrome-theme?color=752df0)](https://github.com/santi020k/santi020k-chrome-theme/releases)
+[![Node](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ![Santi020k Chrome Theme Preview](store/assets/screenshot-main.png)
 
-Chrome browser theme matching the palette of **[santi020k VS Code theme](https://github.com/santi020k/santi020k-theme)** — deep violet chrome (`#0b0712`, `#1c1528`), editor-like surfaces (`#110c1d`), and violet accents (`#752df0` / `#945df4`). This repo is separate from the VS Code extension so releases and [Chrome Web Store](https://chrome.google.com/webstore/category/themes) listings stay independent.
+Chrome browser theme matching the palette of **[santi020k VS Code theme](https://github.com/santi020k/santi020k-theme)** — deep violet chrome (`#0b0712`, `#1c1528`), editor-like surfaces (`#110c1d`), and violet accents (`#752df0` / `#945df4`).
 
-## Try locally (unpacked)
+This repo is separate from the VS Code extension so releases and [Chrome Web Store](https://chrome.google.com/webstore/category/themes) listings stay independent.
+
+## Install
+
+**From the Chrome Web Store** *(coming soon)*: search for *Santi020k* or use the direct link once published.
+
+**Unpacked (developer)**:
 
 1. Open Chrome → **Extensions** (`chrome://extensions`).
 2. Enable **Developer mode**.
-3. Click **Load unpacked** and choose this folder (`santi020k-chrome-theme`).
+3. Click **Load unpacked** and select this folder (`santi020k-chrome-theme`).
 
-## Pack for the Web Store
+## Development
 
 ```bash
-node scripts/package-extension.mjs --dry-run   # validate
-node scripts/package-extension.mjs             # writes dist/santi020k-chrome-theme.zip
+pnpm install
+
+pnpm run dev          # Preview the marketing website (localhost:4175)
+pnpm run build        # Production build of the website
+pnpm run validate     # Validate manifest + run dry-run package
+pnpm run sync         # Sync colors from VS Code theme + regenerate NTP images
+pnpm run package      # Build dist/santi020k-chrome-theme.zip for the Web Store
+pnpm run package:dry  # Validate only, no zip written
 ```
 
-Upload `dist/santi020k-chrome-theme.zip` in the [Chrome Web Developer Dashboard](https://chrome.google.com/webstore/devconsole). See [`store/PUBLISHING.md`](store/PUBLISHING.md) for the full submission checklist and dashboard field values.
+### Sync from VS Code theme
 
-## Palette (santi020k dark)
+When the VS Code palette changes, run:
+
+```bash
+pnpm run sync:themes
+```
+
+This reads `../santi020k-theme/themes/santi020k-dark-color-theme.json` (assumes sibling checkout) and updates both `manifest.json` and `manifest-light.json`. Override the source path with `SOURCE_THEME=/path/to/file.json`.
+
+## Palette
 
 | Role | Hex | VS Code token |
 |------|-----|---------------|
@@ -37,25 +60,17 @@ Upload `dist/santi020k-chrome-theme.zip` in the [Chrome Web Developer Dashboard]
 | Links / accents | `#945df4`, `#b48df7` | `textLink.foreground`, `textLink.activeForeground` |
 | Incognito frame | `#08060e` | derived from frame, darkened |
 
-## Sync from VS Code theme
+## Publishing
 
-When the VS Code theme palette changes, run:
+Upload `dist/santi020k-chrome-theme.zip` (built via `pnpm run package`) in the [Chrome Web Developer Dashboard](https://chrome.google.com/webstore/devconsole).
 
-```bash
-node scripts/sync-from-vscode-theme.mjs
-```
-
-This reads `../santi020k-theme/themes/santi020k-dark-color-theme.json` (assumes sibling checkout) and emits a `theme.colors` snippet to diff against `manifest.json`. Set `SOURCE_THEME=/path/to/file.json` to override the source path.
+- [`store/PUBLISHING.md`](store/PUBLISHING.md) — step-by-step submission checklist and dashboard field values
+- [`store/listing-en.md`](store/listing-en.md) — copy-paste listing text (summary + long description)
+- [`store/image-specs.md`](store/image-specs.md) — screenshot and promo tile specs with capture tips
 
 ## Privacy
 
 This extension changes browser appearance only. It collects no data and uses no permissions or remote code. See [`PRIVACY.md`](PRIVACY.md) for the full policy (also hosted at `theme.santi020k.com/privacy` for the Web Store privacy URL field).
-
-## Publishing docs
-
-- [`store/PUBLISHING.md`](store/PUBLISHING.md) — step-by-step submission checklist + dashboard field values
-- [`store/listing-en.md`](store/listing-en.md) — copy-paste listing text (summary + long description)
-- [`store/image-specs.md`](store/image-specs.md) — screenshot and promo tile specs with capture tips
 
 ## License
 
