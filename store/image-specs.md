@@ -1,7 +1,7 @@
 # Chrome Web Store — Image Specifications
 
 > [!NOTE]
-> **Current Assets:** The latest generated assets matching these specs can be found in [`store/assets/`](assets/).
+> **Current Assets:** The latest generated assets matching these specs can be found in [`store/assets/`](assets/). Unsuffixed assets are for the dark listing; `*-light.png` assets are for the light listing.
 
 ## Extension icon (already in repo)
 
@@ -27,7 +27,7 @@
 
 **What to capture (recommended sequence):**
 
-1. **Toolbar + tabs** — several open tabs showing active (lighter) vs inactive (very dark) distinction and the purple `tab_line` accent. Include the omnibox with text typed.
+1. **Toolbar + tabs** — several open tabs showing active vs inactive distinction and the purple `tab_line` accent. Include the omnibox with text typed.
 2. **New Tab page** — NTP showing the dark `#110c1d` background with links and section headers.
 3. **Incognito window** — slightly darker frame variant.
 4. **Side-by-side with VS Code** — optional, shows palette alignment.
@@ -62,3 +62,15 @@ Design guide:
 | Content | Same visual language as promo tile, wider composition |
 
 Use a horizontal gradient from `#0b0712` → `#1c1528` as the base.
+
+## Light theme assets
+
+Run `pnpm run sync:store-assets:light` to generate the light-specific store assets without overwriting the existing dark assets:
+
+| Asset | Size | Notes |
+|-------|------|-------|
+| `store/assets/promo-tile-light.png` | 440×280 px | Required small promo tile for the light listing |
+| `store/assets/marquee-banner-light.png` | 1400×560 px | Optional marquee banner for the light listing |
+| `store/assets/screenshot-main-light.png` | 1280×800 px | Main browser chrome screenshot |
+| `store/assets/screenshot-ntp-light.png` | 1280×800 px | New Tab page screenshot |
+| `store/assets/screenshot-incognito-light.png` | 1280×800 px | Incognito frame screenshot |

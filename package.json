@@ -11,7 +11,8 @@
     "validate:a11y": "node scripts/validate-theme.mjs",
     "validate": "pnpm run validate:a11y && pnpm run package:dry",
     "sync:themes": "node scripts/sync-from-vscode-theme.mjs --variant=dark --write && node scripts/sync-from-vscode-theme.mjs --variant=light --write",
-    "sync:assets": "node scripts/generate-ntp-image.mjs && node scripts/generate-ntp-image-light.mjs",
+    "sync:assets": "node scripts/generate-ntp-image.mjs && node scripts/generate-ntp-image-light.mjs && node scripts/generate-store-assets-light.mjs",
+    "sync:store-assets:light": "node scripts/generate-store-assets-light.mjs",
     "sync": "pnpm run sync:themes && pnpm run sync:assets",
     "package": "node scripts/package-extension.mjs",
     "package:dry":  "node scripts/package-extension.mjs --dry-run"

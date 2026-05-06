@@ -7,8 +7,8 @@
 - [ ] `node scripts/package-extension.mjs --dry-run` passes
 - [ ] `node scripts/package-extension.mjs` produces `dist/santi020k-chrome-theme.zip`
 - [ ] Zip verified: unzip and confirm only `manifest.json`, `icons/`, and `LICENSE` are present (no `store/`, `scripts/`, or `README.md` unless intentional)
-- [ ] Screencaptures taken per `store/image-specs.md` (at least 1 screenshot)
-- [ ] Small promo tile (440×280 px PNG) ready
+- [ ] Screencaptures taken per `store/image-specs.md` (at least 1 screenshot; use `*-light.png` files for the light listing)
+- [ ] Small promo tile (440×280 px PNG) ready (`promo-tile-light.png` for the light listing)
 
 ## Dashboard fields
 
@@ -59,3 +59,13 @@ Review typically takes 1–3 business days for themes.
 - [x] Update `README.md` badge/link once the store listing URL is known
 - [x] Tag the release in git: `git push --tags`
 - [ ] Publish light theme listing when ready
+
+## Light Theme Listing Assets
+
+Generate the light listing artwork with:
+
+```sh
+pnpm run sync:store-assets:light
+```
+
+Upload the generated `store/assets/*-light.png` files to the light theme Chrome Web Store listing. The existing unsuffixed files remain the dark listing assets.
