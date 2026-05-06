@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.0] - 2026-05-06
+
+### Fixed
+- `theme_ntp_background` was referencing `.webp` files that Chrome could not decode; switched both dark and light manifests to use the PNG files produced by the generate scripts
+- CI workflow NTP image check updated from `.webp` to `.png` (dark and light)
+
+### Improved
+- Added `Accessibility and contrast validation` step to CI workflow (`pnpm run validate:a11y`), ensuring contrast ratios are checked on every push and pull request
+
 ## [1.1.0] - 2026-05-01
 
 ### Added

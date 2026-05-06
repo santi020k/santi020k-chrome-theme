@@ -28,4 +28,7 @@ jobs:
         run: pnpm run package:dry
 
       - name: NTP background image present
-        run: test -f images/theme_ntp_background.webp
+        run: test -f images/theme_ntp_background.png && test -f images/theme_ntp_background_light.png
+
+      - name: Accessibility and contrast validation
+        run: pnpm run validate:a11y
