@@ -10,7 +10,7 @@
   },
   "theme": {
     "images": {
-      "theme_ntp_background": "images/theme_ntp_background_light.webp"
+      "theme_ntp_background": "images/theme_ntp_background_light.png"
     },
     "properties": {
       "ntp_background_alignment": "center",
