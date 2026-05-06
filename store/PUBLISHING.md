@@ -53,6 +53,9 @@ Review typically takes 1–3 business days for themes.
 
 ## Post-publish
 
-- [ ] Install from Web Store and smoke-test all tab states (active, inactive, incognito)
-- [ ] Update `README.md` badge/link once the store listing URL is known
-- [ ] Tag the release in git: `git tag v1.1.0 && git push --tags`
+**Dark theme listing:** <https://chromewebstore.google.com/detail/cljcifjjgolaplmemjcnjhkjfoneadgj>
+
+- [x] Install from Web Store and smoke-test all tab states (active, inactive, incognito)
+- [x] Update `README.md` badge/link once the store listing URL is known
+- [x] Tag the release in git: `git push --tags`
+- [ ] Publish light theme listing when ready

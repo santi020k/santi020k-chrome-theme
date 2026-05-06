@@ -1,5 +1,7 @@
 # Chrome Web Store Listing — English
 
+**Live listing (dark theme):** <https://chromewebstore.google.com/detail/cljcifjjgolaplmemjcnjhkjfoneadgj>
+
 ## Summary (≤132 chars — paste into "Short description" field)
 
 ```
