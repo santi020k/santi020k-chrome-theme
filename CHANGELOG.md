@@ -9,6 +9,19 @@
 ### Improved
 - Added `Accessibility and contrast validation` step to CI workflow (`pnpm run validate:a11y`), ensuring contrast ratios are checked on every push and pull request
 
+## [1.2.0] - 2026-05-01
+
+### Added
+- `images/adaptive_assets_diagonal.webp`, `dark.png`, `light.png`, `wallpaper.heic` — adaptive, dark/light mode, and wallpaper assets
+- `scripts/generate-ntp-image-light.mjs` — pure Node.js PNG generator for the light NTP background (1920×1080, lavender with terminal prompt motif)
+- `manifest-light.json` — Light theme variant with soft lavender palette
+- Website: web manifest, sitemap, `robots.txt`, and social meta tags for improved SEO/discoverability
+
+### Changed
+- NTP background migrated to a stylized WebP for both dark and light variants
+- `package-extension.mjs` updated to package both dark and light variants
+- Migrated from npm to pnpm; added `.github/FUNDING.yml`
+
 ## [1.1.0] - 2026-05-01
 
 ### Added
