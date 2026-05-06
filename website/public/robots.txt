@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://theme.santi020k.com/chrome/sitemap.xml
+Sitemap: https://chrome.santi020k.com/sitemap.xml

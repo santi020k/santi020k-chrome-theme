@@ -9,7 +9,7 @@
       "type": "image/svg+xml"
     }
   ],
-  "start_url": "/chrome",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#110c1d",
   "theme_color": "#110c1d"
