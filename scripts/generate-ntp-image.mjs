@@ -1,81 +1,34 @@
 #!/usr/bin/env node
 /**
- * Generates images/theme_ntp_background.png — a 256×256 vertical gradient
- * from #110c1d (editor.background, top) to #1c1528 (sideBar.background, bottom).
+ * Converts images/theme_ntp_background.webp → images/theme_ntp_background.png
+ * for the Santi020k Chrome theme.
  *
- * Pure Node.js — no external dependencies. Run once and commit the output.
+ * Chrome cannot decode WebP theme images; this script uses the macOS `sips`
+ * utility to losslessly re-encode the authoritative WebP (3840×2160) as a PNG
+ * that Chrome can load as the New Tab Page background.
+ *
+ * Source asset: images/theme_ntp_background.webp
+ * Output asset: images/theme_ntp_background.png
  *
  * Usage:
- *   npm run generate:ntp
+ *   pnpm run sync:assets
  */
 
-import { writeFileSync, mkdirSync } from 'fs';
-import { deflateSync } from 'zlib';
+import { execSync } from 'child_process';
+import { mkdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const root = join(__dir, '..');
 
-const W = 256, H = 256;
-const TOP = [0x11, 0x0c, 0x1d]; // #110c1d — editor.background
-const BOT = [0x1c, 0x15, 0x28]; // #1c1528 — sideBar.background
-
-// CRC32 (required for PNG chunk integrity)
-const CRC_TABLE = (() => {
-  const t = new Uint32Array(256);
-  for (let n = 0; n < 256; n++) {
-    let c = n;
-    for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
-    t[n] = c;
-  }
-  return t;
-})();
-
-function crc32(buf) {
-  let crc = 0xffffffff;
-  for (const b of buf) crc = CRC_TABLE[(crc ^ b) & 0xff] ^ (crc >>> 8);
-  return (crc ^ 0xffffffff) >>> 0;
-}
-
-function chunk(type, data) {
-  const typeBytes = Buffer.from(type, 'ascii');
-  const lenBuf = Buffer.alloc(4);
-  lenBuf.writeUInt32BE(data.length);
-  const crcBuf = Buffer.alloc(4);
-  crcBuf.writeUInt32BE(crc32(Buffer.concat([typeBytes, data])));
-  return Buffer.concat([lenBuf, typeBytes, data, crcBuf]);
-}
-
-// IHDR: width, height, bit-depth=8, color-type=2 (RGB), defaults 0
-const ihdr = Buffer.alloc(13);
-ihdr.writeUInt32BE(W, 0);
-ihdr.writeUInt32BE(H, 4);
-ihdr[8] = 8; ihdr[9] = 2;
-
-// Scanlines: 1 filter byte + W*3 RGB bytes per row
-const raw = Buffer.alloc(H * (1 + W * 3));
-for (let y = 0; y < H; y++) {
-  const t = y / (H - 1);
-  const r = Math.round(TOP[0] + t * (BOT[0] - TOP[0]));
-  const g = Math.round(TOP[1] + t * (BOT[1] - TOP[1]));
-  const b = Math.round(TOP[2] + t * (BOT[2] - TOP[2]));
-  const base = y * (1 + W * 3);
-  raw[base] = 0; // filter: None
-  for (let x = 0; x < W; x++) {
-    raw[base + 1 + x * 3] = r;
-    raw[base + 2 + x * 3] = g;
-    raw[base + 3 + x * 3] = b;
-  }
-}
-
-const png = Buffer.concat([
-  Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), // PNG signature
-  chunk('IHDR', ihdr),
-  chunk('IDAT', deflateSync(raw)),
-  chunk('IEND', Buffer.alloc(0)),
-]);
+const src = join(root, 'images', 'theme_ntp_background.webp');
+const out = join(root, 'images', 'theme_ntp_background.png');
 
 mkdirSync(join(root, 'images'), { recursive: true });
-writeFileSync(join(root, 'images', 'theme_ntp_background.png'), png);
-console.log(`Generated images/theme_ntp_background.png (${png.length} bytes)`);
+
+execSync(`sips -s format png "${src}" --out "${out}"`, { stdio: 'inherit' });
+
+const { size } = statSync(out);
+console.log(`Converted theme_ntp_background.webp → theme_ntp_background.png (${size} bytes)`);
+

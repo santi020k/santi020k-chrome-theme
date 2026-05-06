@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1] - 2026-05-06
+
+### Fixed
+- `theme_ntp_background.png` (dark) was only 256×256 px; Chrome renders it as a tiny centred square on the New Tab page when `ntp_background_repeat` is `no-repeat`.
+- Replaced the procedural dark PNG generator with a `sips`-based conversion: the authoritative **3840×2160** `theme_ntp_background.webp` is now re-encoded as PNG so Chrome can load it correctly.
+- Replaced the procedural light PNG generator: `images/light.png` (**1920×1080**) is now copied directly to `theme_ntp_background_light.png` as the authoritative light NTP background.
+- Both `scripts/generate-ntp-image.mjs` and `scripts/generate-ntp-image-light.mjs` rewritten to use real source assets instead of synthetic generation.
+
 ## [1.3.0] - 2026-05-06
 
 ### Fixed
