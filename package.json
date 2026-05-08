@@ -1,6 +1,6 @@
 {
   "name": "santi020k-chrome-theme",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Chrome browser theme matching the Santi020k palette.",
   "type": "module",
   "engines": { "node": ">=22" },

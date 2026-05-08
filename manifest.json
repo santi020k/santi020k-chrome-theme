@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Santi020k Theme",
-  "version": "1.3.2",
-  "description": "Browser chrome aligned with the Santi020k VS Code theme — deep violet surfaces, muted lavender text, and violet accents.",
+  "version": "1.3.3",
+  "description": "Browser chrome aligned with the Santi020k VS Code theme - deep violet surfaces, muted lavender text, and violet accents.",
   "homepage_url": "https://theme.santi020k.com",
   "icons": {
     "16": "icons/icon16.png",

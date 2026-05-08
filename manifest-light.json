@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Santi020k Theme (Light)",
-  "version": "1.3.2",
-  "description": "Light version of the Santi020k theme — soft lavender surfaces, deep violet accents, and high legibility.",
+  "version": "1.3.3",
+  "description": "Light version of the Santi020k theme - soft lavender surfaces, deep violet accents, and high legibility.",
   "icons": {
     "16": "icons/icon-light16.png",
     "48": "icons/icon-light48.png",

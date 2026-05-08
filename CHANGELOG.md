@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.3] - 2026-05-08
+
+### Fixed
+- Ultimate fix for "could not decode `theme_ntp_background.png`": reduced dark background resolution to **1920×1080** (standard 1080p) and applied `--deleteColorManagementProperties` during `sips` conversion to strip all ICC color profiles, ensuring maximum compatibility with Chrome's image decoder.
+- Resolved manifest encoding issues: replaced non-standard characters in `manifest.json` descriptions with plain UTF-8 text to prevent potential parsing errors.
+
 ## [1.3.2] - 2026-05-08
 
 ### Added
@@ -10,9 +16,8 @@
 - `manifest-light.json` now points to the light icon assets instead of reusing the dark theme icons.
 
 ### Fixed
-- Resolved "could not decode `theme_ntp_background.png`" error in Chrome by limiting the maximum dimension of the NTP background to **2560px** (2.5K), reducing memory pressure during decoding while maintaining high quality.
-- Fixed incorrect light theme background: `images/theme_ntp_background_light.png` is now correctly generated from the high-quality **1920×1080** `theme_ntp_background_light.webp` source instead of copying an older `light.png` asset.
-- Both dark and light image generation scripts now use `sips` with standardized PNG output settings for maximum browser compatibility.
+- Fixed incorrect light theme background: `images/theme_ntp_background_light.png` is now correctly generated from the high-quality **1920×1080** `theme_ntp_background_light.webp` source.
+- Both dark and light image generation scripts now use `sips` with standardized PNG output settings and a resolution limit (2560px → 1920px).
 
 ## [1.3.1] - 2026-05-06
 
