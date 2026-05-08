@@ -9,11 +9,14 @@
 
 Chrome browser theme matching the palette of **[santi020k VS Code theme](https://github.com/santi020k/santi020k-theme)** — deep violet chrome (`#0b0712`, `#1c1528`), editor-like surfaces (`#110c1d`), and violet accents (`#752df0` / `#945df4`).
 
-This repo is separate from the VS Code extension so releases and [Chrome Web Store](https://chromewebstore.google.com/detail/cljcifjjgolaplmemjcnjhkjfoneadgj) listings stay independent.
+This repo is separate from the VS Code extension so releases and Chrome Web Store listings stay independent.
 
 ## Install
 
-**From the Chrome Web Store**: [Install Santi020k Theme](https://chromewebstore.google.com/detail/cljcifjjgolaplmemjcnjhkjfoneadgj)
+**From the Chrome Web Store**:
+
+- [Install Santi020k Theme (Dark)](https://chromewebstore.google.com/detail/cljcifjjgolaplmemjcnjhkjfoneadgj)
+- [Install Santi020k Theme (Light)](https://chromewebstore.google.com/detail/ekehaoadgcihpkajlnbpkankaginojci?utm_source=item-share-cb)
 
 **Unpacked (developer)**:
 
@@ -64,7 +67,10 @@ This reads `../santi020k-theme/themes/santi020k-dark-color-theme.json` (assumes 
 
 Upload `dist/santi020k-chrome-theme.zip` (built via `pnpm run package`) in the [Chrome Web Developer Dashboard](https://chrome.google.com/webstore/devconsole).
 
-Published listing (dark theme): <https://chromewebstore.google.com/detail/cljcifjjgolaplmemjcnjhkjfoneadgj>
+Published listings:
+
+- Dark theme: <https://chromewebstore.google.com/detail/cljcifjjgolaplmemjcnjhkjfoneadgj>
+- Light theme: <https://chromewebstore.google.com/detail/ekehaoadgcihpkajlnbpkankaginojci?utm_source=item-share-cb>
 
 - [`store/PUBLISHING.md`](store/PUBLISHING.md) — step-by-step submission checklist and dashboard field values
 - [`store/listing-en.md`](store/listing-en.md) — copy-paste listing text (summary + long description)

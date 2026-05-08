@@ -27,7 +27,9 @@ const out = join(root, 'images', 'theme_ntp_background.png');
 
 mkdirSync(join(root, 'images'), { recursive: true });
 
-execSync(`sips -s format png "${src}" --out "${out}"`, { stdio: 'inherit' });
+// Use -Z 2560 to ensure the image isn't too large for Chrome's NTP process to decode,
+// while still providing high-density (2.5K) resolution for most displays.
+execSync(`sips -s format png -Z 2560 "${src}" --out "${out}"`, { stdio: 'inherit' });
 
 const { size } = statSync(out);
 console.log(`Converted theme_ntp_background.webp → theme_ntp_background.png (${size} bytes)`);

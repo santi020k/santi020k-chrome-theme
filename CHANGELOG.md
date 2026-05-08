@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.2] - 2026-05-08
+
+### Added
+- Added a dedicated light theme icon set (`icons/icon-light*.png` and `icons/icon-light.svg`) matching the dark icon shape with the light theme palette.
+- Added the published light theme Chrome Web Store listing to the website install actions, `README.md`, and store publishing docs.
+
+### Changed
+- `manifest-light.json` now points to the light icon assets instead of reusing the dark theme icons.
+
+### Fixed
+- Resolved "could not decode `theme_ntp_background.png`" error in Chrome by limiting the maximum dimension of the NTP background to **2560px** (2.5K), reducing memory pressure during decoding while maintaining high quality.
+- Fixed incorrect light theme background: `images/theme_ntp_background_light.png` is now correctly generated from the high-quality **1920×1080** `theme_ntp_background_light.webp` source instead of copying an older `light.png` asset.
+- Both dark and light image generation scripts now use `sips` with standardized PNG output settings for maximum browser compatibility.
+
 ## [1.3.1] - 2026-05-06
 
 ### Fixed

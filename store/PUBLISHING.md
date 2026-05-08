@@ -55,10 +55,12 @@ Review typically takes 1–3 business days for themes.
 
 **Dark theme listing:** <https://chromewebstore.google.com/detail/cljcifjjgolaplmemjcnjhkjfoneadgj>
 
+**Light theme listing:** <https://chromewebstore.google.com/detail/ekehaoadgcihpkajlnbpkankaginojci?utm_source=item-share-cb>
+
 - [x] Install from Web Store and smoke-test all tab states (active, inactive, incognito)
 - [x] Update `README.md` badge/link once the store listing URL is known
 - [x] Tag the release in git: `git push --tags`
-- [ ] Publish light theme listing when ready
+- [x] Publish light theme listing
 
 ## Light Theme Listing Assets
 

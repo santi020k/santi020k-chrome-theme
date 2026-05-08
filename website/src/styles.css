@@ -874,7 +874,14 @@ h3 {
 .install-steps a:hover { text-decoration: underline; }
 .install-steps strong { color: var(--ink); }
 
-.install-store-btn { margin-top: auto; align-self: flex-start; }
+.install-store-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.install-store-btn { align-self: flex-start; }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────────── */
 .site-footer {
