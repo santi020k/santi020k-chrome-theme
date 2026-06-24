@@ -4,9 +4,10 @@
  * Supports packaging both Dark and Light variants.
  */
 
-import { existsSync, readFileSync, mkdirSync, createWriteStream } from 'fs';
-import { resolve, dirname, join } from 'path';
+import { createWriteStream,existsSync, mkdirSync, readFileSync } from 'fs';
+import { dirname, join,resolve } from 'path';
 import { fileURLToPath } from 'url';
+
 import archiver from 'archiver';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
@@ -27,21 +28,26 @@ const INCLUDE_COMMON = [
 
 function validate(manifestFile) {
   const manifestPath = join(root, manifestFile);
+
   if (!existsSync(manifestPath)) return null;
 
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
 
   if (manifest.manifest_version !== 3)
     throw new Error(`${manifestFile}: Expected manifest_version 3, got ${manifest.manifest_version}`);
+
   if (!manifest.version || !/^\d+\.\d+\.\d+/.test(manifest.version))
     throw new Error(`${manifestFile}: Invalid or missing version: ${manifest.version}`);
+
   if (!manifest.theme?.colors?.frame)
     throw new Error(`${manifestFile}: Missing theme.colors.frame`);
 
   // Keep package.json and manifest versions in sync
   const pkgPath = join(root, 'package.json');
+
   if (existsSync(pkgPath)) {
     const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
+
     if (pkg.version !== manifest.version)
       throw new Error(`Version mismatch: package.json ${pkg.version} vs ${manifestFile} ${manifest.version}`);
   }
@@ -64,9 +70,12 @@ function build(manifestFile, outputName, version) {
 
     output.on('close', () => {
       console.log(`✓ Packed: dist/${outputName} (v${version}, ${archive.pointer()} bytes)`);
+
       res();
     });
+
     archive.on('error', rej);
+
     archive.pipe(output);
 
     // Add manifest as manifest.json in the zip
@@ -74,7 +83,9 @@ function build(manifestFile, outputName, version) {
     
     for (const entry of INCLUDE_COMMON) {
       const abs = join(root, entry.name);
+
       if (!existsSync(abs)) continue;
+
       if (entry.type === 'dir') {
         archive.directory(abs, entry.name);
       } else {
@@ -90,8 +101,10 @@ async function run() {
   try {
     for (const variant of VARIANTS) {
       const version = validate(variant.manifest);
+
       if (!version) {
         console.log(`Skipping ${variant.name} (manifest not found)`);
+
         continue;
       }
 
@@ -103,8 +116,9 @@ async function run() {
         await build(variant.manifest, variant.output, version);
       }
     }
-  } catch (err) {
-    console.error('Error:', err.message);
+  } catch (error) {
+    console.error('Error:', error.message);
+
     process.exit(1);
   }
 }

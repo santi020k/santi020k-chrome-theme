@@ -6,11 +6,11 @@
  * This script writes light-specific files with a "-light" suffix.
  */
 
+import { spawnSync } from 'child_process';
 import { mkdirSync, rmSync, writeFileSync } from 'fs';
+import { tmpdir } from 'os';
 import { dirname, join } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
-import { spawnSync } from 'child_process';
-import { tmpdir } from 'os';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const root = join(__dir, '..');
@@ -27,12 +27,15 @@ const pages = [
 ];
 
 mkdirSync(outDir, { recursive: true });
+
 rmSync(tmpDir, { recursive: true, force: true });
+
 mkdirSync(tmpDir, { recursive: true });
 
 for (const page of pages) {
   const htmlPath = join(tmpDir, `${page.name}.html`);
   const outPath = join(outDir, page.name);
+
   writeFileSync(htmlPath, html(page), 'utf8');
 
   const result = spawnSync(chromeBin, [
@@ -48,7 +51,9 @@ for (const page of pages) {
 
   if (result.status !== 0) {
     process.stderr.write(result.stderr.toString());
+
     process.stderr.write(result.stdout.toString());
+
     throw new Error(`Failed to render ${page.name}`);
   }
 
@@ -173,6 +178,7 @@ function marqueeBanner() {
 function browserScreenshot({ mode }) {
   const isIncognito = mode === 'incognito';
   const pageTop = mode === 'ntp' ? '0' : '58px';
+
   return `<main class="asset ${isIncognito ? 'incognito' : ''}">
   <div class="chrome" style="inset:0;border:0;box-shadow:none;border-radius:0">
     ${chromeTop(isIncognito)}
@@ -208,6 +214,7 @@ function chromeTop(isIncognito = false) {
 
 function tile(index) {
   const colors = ['#6319be', '#7744b8', '#9c72db', '#d3cde6'];
+
   return `<div class="tile"><div class="tile-icon" style="background:${colors[index % colors.length]}"></div><div class="tile-line"></div></div>`;
 }
 

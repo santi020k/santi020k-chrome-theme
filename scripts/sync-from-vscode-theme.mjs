@@ -4,8 +4,8 @@
  * Supports both Dark and Light variants.
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { resolve, dirname } from 'path';
+import { existsSync,readFileSync, writeFileSync } from 'fs';
+import { dirname,resolve } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
@@ -15,6 +15,7 @@ const variant = args.find(a => a.startsWith('--variant='))?.split('=')[1] || 'da
 
 if (!['dark', 'light'].includes(variant)) {
   console.error('Invalid variant. Use --variant=dark or --variant=light');
+
   process.exit(1);
 }
 
@@ -33,29 +34,36 @@ const targetPath = resolve(__dir, TARGET_MAP[variant]);
 
 if (!existsSync(sourcePath)) {
   console.error(`Source theme not found: ${sourcePath}`);
+
   process.exit(1);
 }
 
 // JSONC → JSON
 const raw = readFileSync(sourcePath, 'utf8');
+
 const stripped = raw
-  .replace(/\/\/.*$/gm, '')
-  .replace(/\/\*[\s\S]*?\*\//g, '');
+  .replaceAll(/\/\/.*$/gm, '')
+  .replaceAll(/\/\*[\s\S]*?\*\//g, '');
+
 const vsc = JSON.parse(stripped).colors;
 
 function hex(token, fallback) {
   const v = vsc[token] || fallback;
+
   if (!v) throw new Error(`Missing VS Code token: ${token}`);
+
   return v.slice(0, 7); // strip alpha
 }
 
 function toRgb(h) {
-  const n = parseInt(h.replace('#', ''), 16);
+  const n = Number.parseInt(h.replace('#', ''), 16);
+
   return [n >> 16 & 0xff, n >> 8 & 0xff, n & 0xff];
 }
 
 function darken(h, factor) {
   const [r, g, b] = toRgb(h);
+
   return [Math.round(r * factor), Math.round(g * factor), Math.round(b * factor)];
 }
 
@@ -73,9 +81,9 @@ const tabActiveFg    = hex('tab.activeForeground');
 const tabInactiveFg  = hex('tab.inactiveForeground');
 const tabAccent      = hex('tab.activeBorder');
 const unfocusedFg    = hex('tab.unfocusedInactiveForeground');
-
 // ── Variant Specific Logic ───────────────────────────────────────────────────
 let tabBackgroundText;
+
 if (variant === 'light') {
   // Contrast fix for Light theme: use a darker shade for inactive tab text
   tabBackgroundText = '#604c8a'; 
@@ -136,9 +144,13 @@ for (const [key, rgb] of Object.entries(colors)) {
 
 if (isWrite) {
   const manifest = JSON.parse(readFileSync(targetPath, 'utf8'));
+
   manifest.theme.colors = colors;
+
   manifest.theme.properties = { ...manifest.theme.properties, ...properties };
+
   writeFileSync(targetPath, JSON.stringify(manifest, null, 2) + '\n');
+
   console.log(`✓ Updated ${TARGET_MAP[variant]}`);
 } else {
   console.log(JSON.stringify({ colors, properties }, null, 2));

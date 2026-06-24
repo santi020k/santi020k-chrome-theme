@@ -16,12 +16,11 @@
 
 import { execSync } from 'child_process';
 import { mkdirSync, statSync } from 'fs';
-import { join, dirname } from 'path';
+import { dirname,join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const root = join(__dir, '..');
-
 const src = join(root, 'images', 'theme_ntp_background_light.webp');
 const out = join(root, 'images', 'theme_ntp_background_light.png');
 
@@ -33,4 +32,5 @@ mkdirSync(join(root, 'images'), { recursive: true });
 execSync(`sips -s format png -Z 1920 --deleteColorManagementProperties "${src}" --out "${out}"`, { stdio: 'inherit' });
 
 const { size } = statSync(out);
+
 console.log(`Converted theme_ntp_background_light.webp → theme_ntp_background_light.png (${size} bytes)`);

@@ -1,25 +1,32 @@
 {
   "name": "santi020k-chrome-theme",
   "version": "1.3.3",
+  "packageManager": "pnpm@10.32.1",
   "description": "Chrome browser theme matching the Santi020k palette.",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "dev":          "vite website --host 127.0.0.1 --port 4175",
-    "build":        "vite build website",
-    "preview":      "vite preview website --host 127.0.0.1 --port 4175",
+    "dev": "vite website --host 127.0.0.1 --port 4175",
+    "build": "vite build website",
+    "preview": "vite preview website --host 127.0.0.1 --port 4175",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "validate:a11y": "node scripts/validate-theme.mjs",
-    "validate": "pnpm run validate:a11y && pnpm run package:dry",
+    "validate": "pnpm run lint && pnpm run validate:a11y && pnpm run package:dry",
     "sync:themes": "node scripts/sync-from-vscode-theme.mjs --variant=dark --write && node scripts/sync-from-vscode-theme.mjs --variant=light --write",
     "sync:assets": "node scripts/generate-ntp-image.mjs && node scripts/generate-ntp-image-light.mjs && node scripts/generate-store-assets-light.mjs",
     "sync:store-assets:light": "node scripts/generate-store-assets-light.mjs",
     "sync": "pnpm run sync:themes && pnpm run sync:assets",
     "package": "node scripts/package-extension.mjs",
-    "package:dry":  "node scripts/package-extension.mjs --dry-run"
+    "package:dry": "node scripts/package-extension.mjs --dry-run"
   },
   "funding": "https://github.com/sponsors/santi020k",
   "devDependencies": {
+    "@santi020k/eslint-config-basic": "2.1.0",
     "archiver": "^7.0.1",
+    "eslint": "^10.2.1",
     "vite": "^8.0.10"
   }
 }
